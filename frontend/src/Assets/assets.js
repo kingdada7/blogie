@@ -1,4 +1,5 @@
 import blogie from "./blogie.png"
+import coolgradient from "./coolgradient.jpg"
 import blog_pic_1 from './blog_pic_1.png';
 import blog_pic_2 from './blog_pic_2.png';
 import blog_pic_3 from './blog_pic_3.png';
@@ -27,7 +28,7 @@ import tick_icon from './tick_icon.svg'
 import star_icon from './star_icon.svg'
 import cross_icon from './cross_icon.svg'
 import home_icon from './home_icon.svg'
-import gradientBackground from './gradientBackground.png'
+
 import dashboard_icon_1 from './dashboard_icon_1.svg'
 import dashboard_icon_2 from './dashboard_icon_2.svg'
 import dashboard_icon_3 from './dashboard_icon_3.svg'
@@ -39,6 +40,7 @@ export const assets = {
     googleplus_icon,
     twitter_icon,
     blogie,
+    coolgradient,
     // logo,
     arrow,
     logo_light,
@@ -52,7 +54,7 @@ export const assets = {
     tick_icon,
     star_icon,
     home_icon,
-    gradientBackground,
+
     list_icon,
     cross_icon,
     dashboard_icon_1,
