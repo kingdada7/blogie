@@ -1,8 +1,9 @@
 import React, { useEffect } from "react";
 import { useState } from "react";
 import { useParams } from "react-router";
-import { blog_data } from "../Assets/assets";
+import { assets, blog_data } from "../Assets/assets";
 import Navbar from "../components/Navbar";
+import SpaceBackground from "../components/SpaceBackground";
 
 function Blog() {
   const { id } = useParams();
@@ -19,7 +20,8 @@ function Blog() {
   }, []);
 
   return data ? (
-    <div>
+    <div className="relative">
+      <SpaceBackground />
       <Navbar />
       <div></div>
       <div></div>
