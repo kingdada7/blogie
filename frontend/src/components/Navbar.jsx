@@ -6,12 +6,12 @@ const Navbar = () => {
   const navigate = useNavigate();
 
   return (
-    <div className="flex justify-between items-center cursor-pointer py-5 mx-8 sm:mx-20 xl:mx-32">
+    <div className="flex justify-between items-center  py-5 mx-8 sm:mx-20 xl:mx-32">
       <img
         onClick={() => navigate("/")}
         src={assets.blogie}
         alt="logo"
-        className="w-20 h-20 object-contain"
+        className="w-20 h-20 object-contain cursor-pointer"
       />
       <button
         onClick={() => navigate("/admin")}

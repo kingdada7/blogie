@@ -6,16 +6,16 @@ const Header = () => {
   return (
     <div className="mx-8 sm:mx-16 xl:mx-24 relative">
       <div className="text-center mt-20 mb-8">
-        <div className="inline-flex items-center justify-center gap-4 px-6 py-1.5 mb-4 border border-primary/40 bg-primary/10 rounded-full text-sm text-primary">
+        <div className="inline-flex items-center justify-center gap-4 px-6 py-1.5 mb-4 border border-primary/40 bg-primary/10 rounded-full text-sm text-cyan-600 font-medium">
           <p>AI feature intergrated</p>
           <Sparkles className="w-3.5" />
         </div>
 
-        <h1 className="text-xl sm:text-6xl font-semibold sm:leading-16 text-gray-700">
+        <h1 className="text-xl sm:text-6xl font-semibold sm:leading-16 text-white">
           Welcome to <span className="text-cyan-600">blogie</span> <br />
           your own blogging platform
         </h1>
-        <p className="my-6 sm:my-8 max-w-2xl m-auto max-sm:text-xs">
+        <p className="my-6 sm:my-8 max-w-2xl m-auto max-sm:text-xs text-white">
           There is a vitality, a life force, an energy... translated through you
           into action, and because there is only one of you in all time, this
           expression is unique.

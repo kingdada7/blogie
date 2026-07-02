@@ -32,7 +32,7 @@ const Footer = () => {
         </div>
       </div>
 
-      <p className="text-primary text-center py-4 text-sm md:text-base">
+      <p className="text-gray-500 text-center py-4 text-sm md:text-base">
         &copy; {new Date().getFullYear()} Blogie. All rights reserved.
       </p>
     </div>
