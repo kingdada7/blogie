@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { useState } from "react";
 import { useParams } from "react-router";
-import { assets, blog_data } from "../Assets/assets";
+import { assets, blog_data, comments_data } from "../Assets/assets";
 import Navbar from "../components/Navbar";
 import SpaceScene from "../components/space/SpaceScene";
 import moment from "moment";
@@ -17,8 +17,13 @@ function Blog() {
     setData(data);
   };
 
+  const fetchComments = async () => {
+    setComments(comments_data);
+  };
+
   useEffect(() => {
     fetchBlogData();
+    fetchComments();
   }, []);
 
   return data ? (
@@ -47,7 +52,7 @@ function Blog() {
         ></div>
         {/* comments section */}
         <div className="mt-14 mb-10 max-w-3xl mx-auto">
-          <p>Comments</p>
+          <p className="text-gray-400">Comments({comments.length})</p>
         </div>
       </div>
     </div>
