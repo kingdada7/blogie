@@ -10,6 +10,7 @@ function Blog() {
   const { id } = useParams();
 
   const [data, setData] = useState("");
+  const [comments, setComments] = useState([]);
 
   const fetchBlogData = async () => {
     const data = blog_data.find((item) => item._id === id);
@@ -40,7 +41,14 @@ function Blog() {
       </div>
       <div className="mx-5 max-w-5xl md:mx-auto my-10 mt-6">
         <img src={data.image} alt="rounded-xl mb-5" />
-        <div dangerouslySetInnerHTML={{ __html: data.description }}></div>
+        <div
+          className="rich-text max-w-xl mx-auto"
+          dangerouslySetInnerHTML={{ __html: data.description }}
+        ></div>
+        {/* comments section */}
+        <div className="mt-14 mb-10 max-w-3xl mx-auto">
+          <p>Comments</p>
+        </div>
       </div>
     </div>
   ) : (
