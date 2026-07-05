@@ -109,6 +109,15 @@ function Blog() {
             </button>
           </form>
         </div>
+        {/* share button */}
+        <div className="my-24 max-w-3xl mx-auto">
+          <p className="text-white font-semibold my-4">Share this post</p>
+          <div className="flex">
+            <img src={assets.facebook_icon} alt="Facebook" />
+            <img src={assets.twitter_icon} alt="Twitter" />
+            <img src={assets.googleplus_icon} alt="Google+" />
+          </div>
+        </div>
       </div>
     </div>
   ) : (
