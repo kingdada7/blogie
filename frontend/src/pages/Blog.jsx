@@ -3,12 +3,13 @@ import { useState } from "react";
 import { useParams } from "react-router";
 import { assets, blog_data, comments_data } from "../Assets/assets";
 import Navbar from "../components/Navbar";
-import SpaceScene from "../components/space/SpaceScene";
+
 import moment from "moment";
+import Loader from "../components/Loader";
+import Footer from "../components/Footer";
 
 function Blog() {
   const { id } = useParams();
-
   const [data, setData] = useState("");
   const [comments, setComments] = useState([]);
   const [name, setName] = useState("");
@@ -32,9 +33,10 @@ function Blog() {
     fetchComments();
   }, []);
 
-  return data ? (
+  return (
     <div className="relative">
-      <SpaceScene />
+      <Loader />
+    
       <Navbar />
       <div className="text-center mt-20 text-gray-600">
         <p className="text-gray-400">
@@ -113,16 +115,13 @@ function Blog() {
         <div className="my-24 max-w-3xl mx-auto">
           <p className="text-white font-semibold my-4">Share this post</p>
           <div className="flex">
-            <img src={assets.facebook_icon} alt="Facebook" />
-            <img src={assets.twitter_icon} alt="Twitter" />
-            <img src={assets.googleplus_icon} alt="Google+" />
+            <img src={assets.facebook_icon} width="50" alt="Facebook" />
+            <img src={assets.twitter_icon} width="50" alt="Twitter" />
+            <img src={assets.googleplus_icon} width="50" alt="Google+" />
           </div>
         </div>
       </div>
-    </div>
-  ) : (
-    <div>
-      <h1>loading...</h1>
+      <Footer />
     </div>
   );
 }
