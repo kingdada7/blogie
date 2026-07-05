@@ -71,11 +71,13 @@
 
 .rich-text ol {
   margin-left: 30px;
+  color: #9ca3af;
   list-style-type: decimal;
 }
 
 .rich-text ul {
   margin-left: 30px;
+  color: #9ca3af;
   list-style-type: disc;
 }
 
