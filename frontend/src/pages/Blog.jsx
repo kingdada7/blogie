@@ -21,6 +21,10 @@ function Blog() {
     setComments(comments_data);
   };
 
+  const addComment = async () => {
+    e.preventDefault();
+  };
+
   useEffect(() => {
     fetchBlogData();
     fetchComments();
@@ -52,7 +56,9 @@ function Blog() {
         ></div>
         {/* comments section */}
         <div className="mt-14 mb-10 max-w-3xl mx-auto">
-          <p className="text-gray-400 font-semibold mb-4">Comments({comments.length})</p>
+          <p className="text-gray-400 font-semibold mb-4">
+            Comments({comments.length})
+          </p>
           <div className="flex flex-col gap-4">
             {comments.map((item, index) => (
               <div
@@ -74,10 +80,31 @@ function Blog() {
           </div>
         </div>
         {/* add a comment section here */}
-<div>
-  
-</div>
-
+        <div className="max-w-3xl mx-auto">
+          <p className="font-semibold mb-4 text-gray-400">Add a comment</p>
+          <form
+            onSubmit={addComment}
+            className="flex flex-col items-start gap-4 max-w-lg"
+          >
+            <input
+              type="text"
+              placeholder="Name"
+              required
+              className="w-full p-2 border border-gray-300 rounded outline-none text-gray-400"
+            />
+            <textarea
+              placeholder="Comment"
+              required
+              className="w-full p-2 border border-gray-300 rounded outline-none h-48 text-gray-400 resize-none"
+            ></textarea>
+            <button
+              type="submit"
+              className="bg-cyan-500 text-white py-2 px-8 rounded hover:bg-cyan-600 transition-all cursor-pointer"
+            >
+              Submit Comment
+            </button>
+          </form>
+        </div>
       </div>
     </div>
   ) : (
