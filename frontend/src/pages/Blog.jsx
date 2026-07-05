@@ -11,6 +11,8 @@ function Blog() {
 
   const [data, setData] = useState("");
   const [comments, setComments] = useState([]);
+  const [name, setName] = useState("");
+  const [content, setContent] = useState("");
 
   const fetchBlogData = async () => {
     const data = blog_data.find((item) => item._id === id);
@@ -21,7 +23,7 @@ function Blog() {
     setComments(comments_data);
   };
 
-  const addComment = async () => {
+  const addComment = async (e) => {
     e.preventDefault();
   };
 
@@ -87,12 +89,14 @@ function Blog() {
             className="flex flex-col items-start gap-4 max-w-lg"
           >
             <input
+              onChange={(e) => setName(e.target.value)}
               type="text"
               placeholder="Name"
               required
               className="w-full p-2 border border-gray-300 rounded outline-none text-gray-400"
             />
             <textarea
+              onChange={(e) => setContent(e.target.value)}
               placeholder="Comment"
               required
               className="w-full p-2 border border-gray-300 rounded outline-none h-48 text-gray-400 resize-none"
