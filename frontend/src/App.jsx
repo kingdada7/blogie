@@ -21,6 +21,7 @@ const App = () => {
           <Route path="addBlog" element={<AddBlog />} />
           <Route path="listBlog" element={<ListBlog />} />
           <Route path="comments" element={<Comments />} />
+          {/* <Route path ="" element={}/> */}
         </Route>
       </Routes>
     </div>
