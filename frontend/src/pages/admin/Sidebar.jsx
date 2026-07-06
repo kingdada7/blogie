@@ -12,7 +12,7 @@ import { CirclePlus } from "lucide-react";
 
 const Sidebar = () => {
   return (
-    <div className="flex flex-col border-r border-gray-200 min-h-full pt-6">
+    <div className="flex flex-col border-r border-gray-800 min-h-full pt-6">
       <NavLink
         end={true}
         to="/admin"
