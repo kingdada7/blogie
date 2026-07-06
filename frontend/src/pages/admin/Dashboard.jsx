@@ -26,6 +26,18 @@ const Dashboard = () => {
         <img src={assets.add_icon} alt="" className="min-w-4 w-5" />
         <p className="hidden md:inline-block text-white">Add blog</p>
       </NavLink>
+
+
+        <NavLink
+        end={true}
+        to="/admin/listBlog"
+        className={({ isActive }) =>
+          `flex items-center gap-3 py-3.5 px-3 md:px-9 md:min-w-64 cursor-pointer ${isActive && "bg-cyan-600/10 border-r-4 border-cyan-600"}`
+        }
+      >
+        <img src={assets.list_icon} alt="" className="min-w-4 w-5" />
+        <p className="hidden md:inline-block text-white">Blog Lists</p>
+      </NavLink>
     </div>
   );
 };
