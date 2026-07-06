@@ -15,7 +15,37 @@ const Login = () => {
               Enter your credentials to access the admin panel
             </p>
           </div>
-          <form onSubmit={handleSubmit}></form>
+          <form
+            onSubmit={handleSubmit}
+            className="mt-6 mb-6 w-full sm:max-w-md text-gray-600"
+          >
+            <div className="flex flex-col">
+              <label className="text-white">Email</label>
+              <input
+                type="email"
+                required
+                placeholder="Your email address"
+                className="border-b-2 border-gray-300 p-2 outline-none mb-6 text-white"
+              />
+            </div>
+
+            <div className="flex flex-col">
+              <label className="text-white">Password</label>
+              <input
+                type="password"
+                required
+                placeholder="Enter your password"
+                className="border-b-2 border-gray-300 p-2 outline-none mb-6 text-white"
+              />
+            </div>
+
+            <button
+              type="submit"
+              className="w-full py-3 font-medium bg-cyan-600 text-white rounded cursor-pointer hover:bg-cyan-600/90 transition-all"
+            >
+              Login
+            </button>
+          </form>
         </div>
       </div>
     </div>
