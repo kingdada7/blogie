@@ -1,35 +1,21 @@
 import React from "react";
-// import Layout from './Layout'
+import { NavLink } from "react-router";
 import { assets } from "../../Assets/assets";
-import { useNavigate } from "react-router";
 
 const Dashboard = () => {
-  const navigate = useNavigate();
-
-  const logout = () => {
-    navigate("/");
-  };
-
   return (
-    <>
-      <div className="flex  items-center  gap-200 py-2 px-4 sm:px-12 border-b border-gray-300">
-        <img
-          src={assets.blogie}
-          className=" object-contain h-20 w-20 sm:w-40 cursor-pointer"
-          alt="Logo"
-          onClick={() => navigate("/")}
-        />
-
-        
-        <button
-          onClick={logout}
-          className="text-sm px-8 py-2 bg-primary text-white rounded-full cursor-pointer"
-        >
-          Logout
-        </button>
-      </div>
-      <div className="flex h-[calc(100vh-70px)]"></div>
-    </>
+    <div className="flex flex-col border-r border-gray-200 min-h-full pt-6">
+      <NavLink
+        end={true}
+        to="/admin"
+        className={({ isActive }) =>
+          `flex items-center gap-3 py-3.5 px-3 md:px-9 md:min-w-64 cursor-pointer ${isActive && "bg-cyan-600/10 border-r-4 border-cyan-600"}`
+        }
+      >
+        <img src={assets.home_icon} alt="" className="min-w-4 w-5" />
+        <p className="hidden md:inline-block text-white">Dashboard</p>
+      </NavLink>
+    </div>
   );
 };
 

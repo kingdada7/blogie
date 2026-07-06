@@ -12,7 +12,7 @@ import Comments from "./pages/admin/Comments";
 const App = () => {
   return (
     <div>
-      {/* <SpaceScene /> */}
+      <SpaceScene />
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/blog/:id" element={<Blog />} />
