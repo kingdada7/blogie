@@ -1,6 +1,8 @@
-import React from "react";
+import React, { useState } from "react";
 
 const Login = () => {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
   const handleSubmit = () => {};
 
   return (
@@ -23,6 +25,8 @@ const Login = () => {
               <label className="text-white">Email</label>
               <input
                 type="email"
+                onChange={(e) => setEmail(e.target.value)}
+                value={email}
                 required
                 placeholder="Your email address"
                 className="border-b-2 border-gray-300 p-2 outline-none mb-6 text-white"
@@ -33,6 +37,8 @@ const Login = () => {
               <label className="text-white">Password</label>
               <input
                 type="password"
+                onChange={(e) => setPassword(e.target.value)}
+                value={password}
                 required
                 placeholder="Enter your password"
                 className="border-b-2 border-gray-300 p-2 outline-none mb-6 text-white"
