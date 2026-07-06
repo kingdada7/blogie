@@ -1,32 +1,18 @@
-import React from "react";
-import { assets } from "../../Assets/assets";
-import { useNavigate } from "react-router";
+import { Outlet } from "react-router";
+import { SidebarProvider, SidebarTrigger } from "@/components/ui/sidebar";
+import AppSidebar from "./AppSidebar";
 
-const Layout = () => {
-  const navigate = useNavigate();
-
-  const logout = () => {
-    navigate("/");
-  };
-
+export default function Layout() {
   return (
-    <>
-      <div className="flex items-center justify-between py-2 h-[70px] px-4 sm:px-12 border-b border-gray-300">
-        <img
-          src={assets.blogie}
-          className=" object-contain h-20 w-20 sm:w-40 cursor-pointer"
-          alt="Logo"
-          onClick={() => navigate("/")}
-        />
-        <button
-          onClick={logout}
-          className="text-sm px-8 py-2 bg-primary text-white rounded-full cursor-pointer"
-        >
-          Logout
-        </button>
-      </div>
-    </>
-  );
-};
+    <SidebarProvider>
+      <AppSidebar />
 
-export default Layout;
+      <div>
+        <main className=" ">
+          <SidebarTrigger />
+          <Outlet />
+        </main>
+      </div>
+    </SidebarProvider>
+  );
+}
