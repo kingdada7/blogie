@@ -6,12 +6,13 @@ import {
   NotepadTextDashed,
 } from "lucide-react";
 import { dashboard_data } from "../../Assets/assets";
+import BlogTableItem from "./BlogTableItem";
 const Dashboard = () => {
   const [dashboardData, setDashboardData] = useState({
     blogs: 0,
     comments: 0,
     drafts: 0,
-    recentsBlogs: [],
+    recentBlogs: [],
   });
 
   const fetchDashboard = async () => {
@@ -61,7 +62,7 @@ const Dashboard = () => {
           <p className="text-white">Latest Blogs</p>
         </div>
         <div className="relative max-w-4xl overflow-x-auto shadow rounded-lg scrollbar-hide bg-white/10">
-          <table className="w-full text-sm text">
+          <table className="w-full text-sm text-gray-500">
             <thead className="text-xs text-gray-600 text-left uppercase">
               <tr>
                 <th scope="col" className="px-2 py-4 xl:px-6">
@@ -81,6 +82,17 @@ const Dashboard = () => {
                 </th>
               </tr>
             </thead>
+            <tbody>
+              {dashboardData.recentBlogs.map((blog, index) => {
+                return <BlogTableItem
+                    key={blog._id}
+                    blog={blog}
+                    fetchBlogs={fetchDashboard}
+                    index={index + 1}
+                  />
+                
+              })}
+            </tbody>
           </table>
         </div>
       </div>
