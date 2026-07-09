@@ -25,7 +25,7 @@ const AddBlog = () => {
               className="h-16 w-16 rounded"
             />
           ) : (
-            <Upload className=" mt-2 h-12 w-12 text-gray-500" />
+            <Upload className=" mt-2 h-10 w-10 text-gray-500" />
           )}
           <input
             onChange={(e) => setImage(e.target.files[0])}
@@ -35,6 +35,15 @@ const AddBlog = () => {
             required
           />
         </label>
+
+        <p className="mt-4 text-gray-300">Blog title</p>
+        <input
+          type="text"
+          placeholder="Type here"
+          required
+          className="w-full max-w-lg mt-2 p-2 border border-gray-300 outline-none rounded"
+          onChange={(e) => setTitle(e.target.value)}
+        />
       </div>
     </form>
   );
