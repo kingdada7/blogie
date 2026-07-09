@@ -15,11 +15,26 @@ const AddBlog = () => {
 
   return (
     <form className="flex-1 text-gray-300 h-full overflow-scroll">
-      <div className="w-full max-w-3xl p-4 md:p-10 sm:m-10 shadow rounded">
+      <div className=" bg-white/5 w-full max-w-3xl p-4 md:p-10 sm:m-10 shadow rounded">
         <p>Upload Thumbnail</p>
-        <label htmlFor="image"></label>
-        <Upload className="mt-12 h-16 rounded cursor-pointer" />
-        <input type="file" id="image hidden required" />
+        <label htmlFor="image">
+          {image ? (
+            <img
+              src={URL.createObjectURL(image)}
+              alt="Preview"
+              className="h-16 w-16 rounded"
+            />
+          ) : (
+            <Upload className=" mt-2 h-12 w-12 text-gray-500" />
+          )}
+          <input
+            onChange={(e) => setImage(e.target.files[0])}
+            type="file"
+            id="image"
+            hidden
+            required
+          />
+        </label>
       </div>
     </form>
   );
