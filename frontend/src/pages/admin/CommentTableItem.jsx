@@ -19,15 +19,15 @@ const CommentTableItem = ({ comment, fetchComments }) => {
         {BlogDate.toLocaleDateString()}
       </td>
       <td className="px-6 py-4">
-        <div>
+        <div className="flex gap-2">
           {!comment.isApproved ? (
-            <CheckCheck className="w-5 hover:scale-110 transition-all cursor-pointer" />
+            <CheckCheck className="w-5 hover:scale-110 hover:text-green-400 transition-all cursor-pointer" />
           ) : (
-            <p className="text-xs border border-green-600 bg-green-100 text-green-600 rounded-full px-3 py-1">
+            <p className="text-xs border border-green-600 bg-green-100 text-green-600  rounded-full px-3 py-1">
               Approved
             </p>
           )}
-          <Trash2 className="w-5 hover:scale-110 transition-all cursor-pointer" />
+          <Trash2 className="w-5 hover:text-red-500 hover:scale-110 transition-all cursor-pointer" />
         </div>
       </td>
     </tr>
