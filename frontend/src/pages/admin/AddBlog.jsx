@@ -4,9 +4,9 @@ import { Upload } from "lucide-react";
 
 const AddBlog = () => {
   const [image, setImage] = useState(false);
-  const [title, setTitle] = useState(false);
-  const [subTiltle, setSubTitle] = useState(false);
-  const [category, setCategory] = useState(false);
+  const [title, setTitle] = useState("");
+  const [subTiltle, setSubTitle] = useState("");
+  const [category, setCategory] = useState("Startup");
   const [isPublished, setIsPublished] = useState(false);
 
   const onSubmitHandler = async (e) => {
@@ -43,6 +43,17 @@ const AddBlog = () => {
           required
           className="w-full max-w-lg mt-2 p-2 border border-gray-300 outline-none rounded"
           onChange={(e) => setTitle(e.target.value)}
+          value={title}
+        />
+
+        <p className="mt-4 text-gray-300">Sub title</p>
+        <input
+          type="text"
+          placeholder="Type here"
+          required
+          className="w-full max-w-lg mt-2 p-2 border border-gray-300 outline-none rounded"
+          onChange={(e) => setTitle(e.target.value)}
+          value={subTiltle}
         />
       </div>
     </form>
