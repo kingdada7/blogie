@@ -1,17 +1,30 @@
-import React, { useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { assets } from "../../Assets/assets";
 import { Upload } from "lucide-react";
+import Quill from "quill";
 
 const AddBlog = () => {
+  const editorRef = useRef(null);
+  const quillRef = useRef(null);
   const [image, setImage] = useState(false);
   const [title, setTitle] = useState("");
   const [subTiltle, setSubTitle] = useState("");
   const [category, setCategory] = useState("Startup");
   const [isPublished, setIsPublished] = useState(false);
 
+  const generateContent = async () => {};
+
   const onSubmitHandler = async (e) => {
     e.preventDefault();
   };
+
+  useEffect(() => {
+    // INITIATE QUILL ONLY ONCE
+
+    if (!quillRef.current && editorRef.current) {
+      quillRef.current = new Quill(editorRef.current, { theme: "snow" });
+    }
+  }, []);
 
   return (
     <form className="flex-1 text-gray-300 h-full overflow-scroll">
@@ -25,7 +38,7 @@ const AddBlog = () => {
               className="h-16 w-16 rounded"
             />
           ) : (
-            <Upload className=" mt-2 h-10 w-10 text-gray-500" />
+            <Upload className=" mt-2 h-10 w-10 text-gray-500 cursor-pointer" />
           )}
           <input
             onChange={(e) => setImage(e.target.files[0])}
@@ -55,6 +68,17 @@ const AddBlog = () => {
           onChange={(e) => setTitle(e.target.value)}
           value={subTiltle}
         />
+        <p className="mt-4">Blog Description</p>
+        <div className="max-w-lg h-74 pb-16 sm:pb-10 pt-2 relative">
+          <div ref={editorRef}></div>
+          <button
+            type="button"
+            onClick={generateContent}
+            className="absolute bottom-1 right-2 ml-2 text-xs text-white bg-black/70 px-4 py-1.5 rounded hover:underline cursor-pointer"
+          >
+            Generate with AI
+          </button>
+        </div>
       </div>
     </form>
   );
