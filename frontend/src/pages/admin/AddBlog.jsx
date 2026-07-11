@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
-import { assets } from "../../Assets/assets";
+import { assets, blogCategories } from "../../Assets/assets";
 import { Upload } from "lucide-react";
 import Quill from "quill";
 
@@ -79,6 +79,21 @@ const AddBlog = () => {
             Generate with AI
           </button>
         </div>
+        <p className="mt-4">Blog Category </p>
+        <select
+        onChange={e => setCategory(e.target.value)}
+          name="category"
+          className="mt-2 px-3 py-2 border text-gray-500 border-gray-300 outline-none rounded"
+        >
+          <option value="">Select category</option>
+          {blogCategories.map((item, index) => {
+            return (
+              <option key={index} value={item}>
+                {item}
+              </option>
+            );
+          })}
+        </select>
       </div>
     </form>
   );
