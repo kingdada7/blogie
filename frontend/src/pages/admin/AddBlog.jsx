@@ -81,7 +81,7 @@ const AddBlog = () => {
         </div>
         <p className="mt-4">Blog Category </p>
         <select
-        onChange={e => setCategory(e.target.value)}
+          onChange={(e) => setCategory(e.target.value)}
           name="category"
           className="mt-2 px-3 py-2 border text-gray-500 border-gray-300 outline-none rounded"
         >
@@ -94,6 +94,15 @@ const AddBlog = () => {
             );
           })}
         </select>
+        <div className="flex gap-2 mt-4">
+          <p>Publish Now</p>
+          <input
+            type="checkbox"
+            checked={isPublished}
+            className="scale-125 cursor-pointer"
+            onChange={e => setIsPublished(e.target.checked)}
+          />
+        </div>
       </div>
     </form>
   );
