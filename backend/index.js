@@ -11,7 +11,7 @@ dotenv.config();
 connectDB();
 
 const app = express();
-
+// middelware 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
