@@ -3,6 +3,7 @@ import express from "express";
 import dotenv from "dotenv";
 
 import connectDB from "./config/db.js";
+import adminRouter from "./routes/adminRoutes.js";
 
 // Load environment variables FIRST
 dotenv.config();
@@ -11,7 +12,7 @@ dotenv.config();
 connectDB();
 
 const app = express();
-// middelware 
+// middelware
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
@@ -23,6 +24,9 @@ app.use(
     allowedHeaders: ["Content-Type", "Authorization"],
   }),
 );
+//routes
+app.get("/", (req, res) => res.send("API is working"))
+app.use("/api/admin",adminRouter)
 
 const PORT = process.env.PORT || 5000;
 
