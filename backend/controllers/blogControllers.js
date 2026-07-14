@@ -107,6 +107,7 @@ export const togglePublish = async (req, res) => {
 
 export const addComment = async (req, res) => {
   try {
+    const{blog,name,content} = req.body;
   } catch (error) {
     res.json({ success: false, message: error.message });
   }
