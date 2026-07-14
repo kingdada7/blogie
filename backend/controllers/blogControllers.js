@@ -1,29 +1,32 @@
 import fs from "fs";
 
-import imagekit from "../config/imageKIt";
-import ImageKit, { toFile } from "@imagekit/nodejs";
+import imagekit from "../config/imageKit.js";
+import { toFile } from "@imagekit/nodejs";
+import Blog from "../models/Blog.js";
 
 export const addBlog = async (req, res) => {
   try {
     const { title, subTitle, description, category, isPublished } = JSON.parse(
       req.body.blog,
     );
+
     const imageFile = req.file;
 
-    // fields validation
-
     if (!title || !description || !category || !imageFile) {
-      return res.json({ sucesss: false, message: "missing required fields" });
+      return res.json({
+        success: false,
+        message: "missing required fields",
+      });
     }
 
-    await client.files.upload({
-      file: await toFile(Buffer.from("my bytes"), "file"),
+    const fileBuffer = fs.readFileSync(imageFile.path);
+
+    const response = await imagekit.files.upload({
+      file: await toFile(fileBuffer, imageFile.originalname),
       fileName: imageFile.originalname,
       folder: "/blogs",
     });
 
-    // optimaization through  imagekit URL transformation
-    // URL with basic transformations
     const transformedUrl = imagekit.helper.buildSrc({
       urlEndpoint: process.env.IMAGEKIT_URL_ENDPOINT,
       src: response.filePath,
@@ -38,17 +41,23 @@ export const addBlog = async (req, res) => {
       ],
     });
 
-    const image = transformedUrl;
     await Blog.create({
       title,
       subTitle,
       description,
       category,
-      image,
+      image: transformedUrl,
       isPublished,
     });
-    res.json({ success: true, message: "Blog added successfully" });
+
+    res.json({
+      success: true,
+      message: "Blog added successfully",
+    });
   } catch (error) {
-    res.json({ success: false, message: error.message });
+    res.json({
+      success: false,
+      message: error.message,
+    });
   }
 };

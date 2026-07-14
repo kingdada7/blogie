@@ -1,5 +1,5 @@
 import express from "express";
-import { addBlog } from "../controllers/blogControllers";
+import { addBlog } from "../controllers/blogControllers.js";
 import upload from "../middleware/multer.js";
 import auth from "../middleware/auth.js";
 

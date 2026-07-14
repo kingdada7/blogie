@@ -1,19 +1,20 @@
+import "dotenv/config";  
+
 import cors from "cors";
 import express from "express";
-import dotenv from "dotenv";
 
 import connectDB from "./config/db.js";
 import adminRouter from "./routes/adminRoutes.js";
 import blogRouter from "./routes/blogRoutes.js";
+import imagekit from "./config/imageKit.js";
 
-// Load environment variables FIRST
-dotenv.config();
 
-// Then connect to DB
+// Connect DB
 connectDB();
 
+
 const app = express();
-// middelware
+
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
@@ -23,12 +24,15 @@ app.use(
     credentials: true,
     methods: ["GET", "POST", "PUT", "PATCH", "DELETE"],
     allowedHeaders: ["Content-Type", "Authorization"],
-  }),
+  })
 );
-//routes
+
+
 app.get("/", (req, res) => res.send("API is working"));
+
 app.use("/api/admin", adminRouter);
-app.use("api/blog", blogRouter);
+app.use("/api/blog", blogRouter);
+
 
 const PORT = process.env.PORT || 5000;
 
