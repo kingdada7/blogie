@@ -1,7 +1,8 @@
 import express from "express";
 import { addBlog } from "../controllers/blogControllers";
 import upload from "../middleware/multer.js";
+import auth from "../middleware/auth.js";
 
 const blogRouter = express.Router();
 
-blogRouter.post("/add", upload.single("image"), addBlog);
+blogRouter.post("/add", upload.single("image"), auth, addBlog);
