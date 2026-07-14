@@ -3,6 +3,7 @@ import fs from "fs";
 import imagekit from "../config/imageKit.js";
 import { toFile } from "@imagekit/nodejs";
 import Blog from "../models/Blog.js";
+import Comment from "../models/Comment.js";
 
 export const addBlog = async (req, res) => {
   try {
@@ -107,7 +108,9 @@ export const togglePublish = async (req, res) => {
 
 export const addComment = async (req, res) => {
   try {
-    const{blog,name,content} = req.body;
+    const { blog, name, content } = req.body;
+    await Comment.create({ blog, name, content });
+    res.json({ success: true, message: "comment added for review" });
   } catch (error) {
     res.json({ success: false, message: error.message });
   }
