@@ -25,3 +25,14 @@ export const getAllBlogsAdmin = async (req, res) => {
     res.json({ success: false, message: error.message });
   }
 };
+
+export const getAllComments = async (req, res) => {
+  try {
+    const comments = await Comments.find({})
+      .populate("blog")
+      .sort({ createdAt: -1 });
+    res.json({ sucess: true, commets });
+  } catch (error) {
+    res.json({ sucess: false, message: error.message });
+  }
+};
