@@ -77,6 +77,17 @@ export const getBlogById = async (req, res) => {
     if (!blog) {
       return res.json({ success: false, message: "blog not found" });
     }
+    res.json({ success: true, blog });
+  } catch (error) {
+    res.json({ success: false, message: error.message });
+  }
+};
+
+export const deleteBlogById = async (req, res) => {
+  try {
+    const { id } = req.body;
+    await Blog.findByIdAndDelete(id);
+    res.json({ success: true, message: "Blog deleted sucessfully" });
   } catch (error) {
     res.json({ success: false, message: error.message });
   }
