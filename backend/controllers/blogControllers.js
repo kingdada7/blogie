@@ -104,3 +104,10 @@ export const togglePublish = async (req, res) => {
     res.json({ success: false, message: error.message });
   }
 };
+
+export const addComment = async (req, res) => {
+  try {
+  } catch (error) {
+    res.json({ success: false, message: error.message });
+  }
+};
