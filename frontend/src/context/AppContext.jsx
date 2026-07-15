@@ -11,7 +11,7 @@ const AppContext = createContext();
 export const AppProvider = ({ children }) => {
   const navigate = useNavigate();
   const [token, setToken] = useState(null);
-  const [blog, setBlogs] = useState([]);
+  const [blogs, setBlogs] = useState([]);
   const [input, setInput] = useState("");
 
   const fetchBlogs = async () => {
@@ -36,7 +36,7 @@ export const AppProvider = ({ children }) => {
     navigate,
     token,
     setToken,
-    blog,
+    blogs,
     setBlogs,
     input,
     setInput,
