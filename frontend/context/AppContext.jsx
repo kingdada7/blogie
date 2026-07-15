@@ -2,6 +2,8 @@ import { createContext, useContext, useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router";
 
+
+//sets a default base URL for every Axios request.
 axios.defaults.baseURL = import.meta.env.VITE_BASE_URL;
 
 const AppContext = createContext();
