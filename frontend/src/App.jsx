@@ -10,10 +10,12 @@ import ListBlog from "./pages/admin/ListBlog";
 import Comments from "./pages/admin/Comments";
 import Login from "./pages/admin/Login";
 import "quill/dist/quill.snow.css";
+import { Toaster } from "react-hot-toast";
 const App = () => {
   return (
     <div>
       <SpaceScene />
+      <Toaster/>
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/blog/:id" element={<Blog />} />
