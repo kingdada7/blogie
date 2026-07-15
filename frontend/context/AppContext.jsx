@@ -1,13 +1,30 @@
-import { Children } from "react";
-import { createContext, useContext } from "react";
+import { createContext, useContext, useState } from "react";
+import axios from "axios";
+import { useNavigate } from "react-router";
+
+axios.defaults.baseURL = import.meta.env.VITE_BASE_URL;
 
 const AppContext = createContext();
 
-export default AppProvider = ({ Children }) => {
-  const value = {};
+export const AppProvider = ({ children }) => {
+  const navigate = useNavigate();
+  const [token, setToken] = useState(null);
+  const [blog, setBlogs] = useState([]);
+  const [input, setInput] = useState("");
+
+  const value = {
+    axios,
+    navigate,
+    token,
+    setToken,
+    blog,
+    setBlogs,
+    input,
+    setInput,
+  };
   return <AppContext.Provider value={value}>{children}</AppContext.Provider>;
 };
 
 export const useAppContext = () => {
-    return useContext(AppContext)
+  return useContext(AppContext);
 };
