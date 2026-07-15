@@ -1,6 +1,6 @@
 import { ArrowRight } from "lucide-react";
 import { assets } from "../Assets/assets";
-import { useNavigate } from "react-router";
+// import { useNavigate } from "react-router";
 import { useAppContext } from "../context/AppContext";
 
 const Navbar = () => {
