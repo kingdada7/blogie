@@ -1,6 +1,7 @@
 import express from "express";
 import {
   adminLogin,
+  deleteCommentById,
   getAllBlogsAdmin,
   getAllComments,
 } from "../controllers/adminControllers.js";
@@ -11,6 +12,6 @@ const adminRouter = express.Router();
 adminRouter.post("/login", adminLogin);
 adminRouter.get("/comments", auth, getAllComments);
 adminRouter.get("/blogs", auth, getAllBlogsAdmin);
-adminRouter.post("/delete-comment",)
+adminRouter.post("/delete-comment", auth, deleteCommentById);
 
 export default adminRouter;
