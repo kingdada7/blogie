@@ -1,8 +1,15 @@
-import React from "react";
+import React, { useRef } from "react";
 import { assets } from "../Assets/assets";
 import { Sparkles } from "lucide-react";
+import { useAppContext } from "../context/AppContext";
 
 const Header = () => {
+  const { setInput, input } = useAppContext();
+  const inputRef = useRef();
+  const onSubmitHandler = async (e) => {
+    e.preventDefault();
+    setInput(inputRef.current.value);
+  };
   return (
     <div className="mx-8 sm:mx-16 xl:mx-24 relative">
       <div className="text-center mt-20 mb-8">
@@ -20,14 +27,23 @@ const Header = () => {
           into action, and because there is only one of you in all time, this
           expression is unique.
         </p>
-        <form className="flex justify-between max-w-lg max-sm:sclae-75 mx-auto border border-gray-300 bg-white rounded overflow-hidden">
+        <form
+          onSubmit={onSubmitHandler}
+          className="flex justify-between max-w-lg max-sm:sclae-75 mx-auto border border-gray-300 bg-white rounded overflow-hidden"
+        >
           <input
+            ref={inputRef}
             className="w-full pl-4 outline-none"
             type="text"
             placeholder="Search for blogs"
             required
           />
-          <button className="bg-primary text-white px-8 py-2 m-1.5 rounded hover:scale-105 transition-all cursor-pointer " type="submit">Search</button>
+          <button
+            className="bg-cyan-600 text-white px-8 py-2 m-1.5 rounded hover:scale-105 transition-all cursor-pointer "
+            type="submit"
+          >
+            Search
+          </button>
         </form>
       </div>
     </div>
