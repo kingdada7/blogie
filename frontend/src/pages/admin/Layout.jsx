@@ -2,11 +2,15 @@ import React from "react";
 import { assets } from "../../Assets/assets";
 import { Outlet, useNavigate } from "react-router";
 import Sidebar from "./Sidebar";
+import { useAppContext } from "../../context/AppContext";
 
 const Layout = () => {
-  const navigate = useNavigate();
+  const { axios, setToken, navigate } = useAppContext();
 
   const logout = () => {
+    localStorage.removeItem("token");
+    axios.defaults.headers.common["Authorization"] = null;
+    setToken(null);
     navigate("/");
   };
 
@@ -27,7 +31,7 @@ const Layout = () => {
         </button>
       </div>
       <div className="flex h-[calc(100vh-70px)]">
-        <Sidebar/>
+        <Sidebar />
         <Outlet />
       </div>
     </>
