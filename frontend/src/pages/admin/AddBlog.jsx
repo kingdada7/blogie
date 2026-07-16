@@ -24,7 +24,7 @@ const AddBlog = () => {
       setIsAdding(true);
       const blog = {
         title,
-        subTiltle,
+        subTitle,
         description: quillRef.current.root.innerHTML,
         category,
         isPublished,
@@ -96,8 +96,8 @@ const AddBlog = () => {
           placeholder="Type here"
           required
           className="w-full max-w-lg mt-2 p-2 border border-gray-300 outline-none rounded"
-          onChange={(e) => setTitle(e.target.value)}
-          value={subTiltle}
+          onChange={(e) => setSubTitle(e.target.value)}
+          value={subTitle}
         />
         <p className="mt-4">Blog Description</p>
         <div className="max-w-lg h-74 pb-16 sm:pb-10 pt-2 relative">
