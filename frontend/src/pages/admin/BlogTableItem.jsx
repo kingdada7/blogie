@@ -9,6 +9,7 @@ const BlogTableItem = ({ blog, fetchBlogs, index }) => {
   const { title, createdAt } = blog;
   const BlogDate = new Date(createdAt);
   const { axois } = useAppContext();
+
   const deleteBlog = async () => {
     const confirm = window.confirm("Are you sure you want to delete this blog");
     if (!confirm) return;
