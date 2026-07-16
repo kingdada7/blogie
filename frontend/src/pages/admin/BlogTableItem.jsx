@@ -1,11 +1,33 @@
 import { CircleX } from "lucide-react";
 import React from "react";
 import { assets } from "../../Assets/assets";
-
+import { useAppContext } from "../../context/AppContext";
+import toast from "react-hot-toast";
 
 const BlogTableItem = ({ blog, fetchBlogs, index }) => {
   const { title, createdAt } = blog;
   const BlogDate = new Date(createdAt);
+  const { axois } = useAppContext();
+  const deleteBlog = async () => {
+    const confirm = window.confirm("Are you sure you want to delete this blog");
+    if (!confirm) return;
+    try {
+      const { data } = await axios.post("/api/blog/delete", { id: blog._id });
+      if (data.success) {
+        toast.success(data.message);
+        await fetchBlogs();
+      } else {
+        toast.error(data.message);
+      }
+    } catch (error) {
+      toast.error(error.message);
+    }
+  };
+
+const togglePublish = async () =>{
+      const { data } = await axios.post("/api/blog/delete", { id: blog._id });
+}
+
   return (
     <tr className="border-y border-gray-300">
       <th className="px-2 py-4">{index}</th>
