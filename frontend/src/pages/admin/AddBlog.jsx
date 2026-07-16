@@ -3,6 +3,7 @@ import { assets, blogCategories } from "../../Assets/assets";
 import { Upload } from "lucide-react";
 import Quill from "quill";
 import { useAppContext } from "../../context/AppContext";
+import toast from "react-hot-toast";
 
 const AddBlog = () => {
   const { axios } = useAppContext();
@@ -11,14 +12,41 @@ const AddBlog = () => {
   const quillRef = useRef(null);
   const [image, setImage] = useState(false);
   const [title, setTitle] = useState("");
-  const [subTiltle, setSubTitle] = useState("");
+  const [subTitle, setSubTitle] = useState("");
   const [category, setCategory] = useState("Startup");
   const [isPublished, setIsPublished] = useState(false);
 
   const generateContent = async () => {};
 
   const onSubmitHandler = async (e) => {
-    e.preventDefault();
+    try {
+      e.preventDefault();
+      setIsAdding(true);
+      const blog = {
+        title,
+        subTiltle,
+        description: quillRef.current.root.innerHTML,
+        category,
+        isPublished,
+      };
+      const formData = new FormData();
+      formData.append("blog", JSON.stringify(blog));
+      formData.append("image", image);
+      const { data } = await axios.post("/api/blog/add", formData);
+      if (data.success) {
+        toast.success(data.message);
+        setImage(false);
+        setTitle("");
+        quillRef.current.root.innerHTML = "";
+        setCategory("Startup");
+      } else {
+        toast.error(data.message);
+      }
+    } catch (error) {
+      toast.error(error.message);
+    } finally {
+      setIsAdding(false);
+    }
   };
 
   useEffect(() => {
