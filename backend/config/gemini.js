@@ -2,10 +2,10 @@ import { GoogleGenAI } from "@google/genai";
 
 const ai = new GoogleGenAI({ apiKey: process.env.GEMINI_API_KEY });
 
-async function main(promt) {
+async function main(prompt) {
   const interaction = await ai.interactions.create({
     model: "gemini-3.5-flash",
-    input: "promt",
+    input: "prompt",
   });
   return response.text;
 }
