@@ -24,6 +24,26 @@ const CommentTableItem = ({ comment, fetchComments }) => {
     }
   };
 
+  const deleteComment = async () => {
+    try {
+      const confirm = window.confirm(
+        "Are you sure want to delete this comment",
+      );
+      if (!confirm) return;
+      const { data } = await axios.post("api/admin/delete-comment", {
+        id: _id,
+      });
+      if (data.success) {
+        toast.success(data.message);
+        fetchComments();
+      } else {
+        toast.error(data.message);
+      }
+    } catch (error) {
+      toast.error(error.message);
+    }
+  };
+
   return (
     <tr className="order-y" border-gray-300>
       <td className="px-6 py-4">
