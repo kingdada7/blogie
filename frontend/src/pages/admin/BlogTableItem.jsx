@@ -24,9 +24,21 @@ const BlogTableItem = ({ blog, fetchBlogs, index }) => {
     }
   };
 
-const togglePublish = async () =>{
-      const { data } = await axios.post("/api/blog/delete", { id: blog._id });
-}
+  const togglePublish = async () => {
+    try {
+      const { data } = await axios.post("/api/blog/toggle-publish", {
+        id: blog._id,
+      });
+      if (data.success) {
+        toast.success(data.message);
+        await fetchBlogs();
+      } else {
+        toast.error(data.message);
+      }
+    } catch (error) {
+      toast.error(error.message);
+    }
+  };
 
   return (
     <tr className="border-y border-gray-300">
