@@ -1,9 +1,28 @@
 import { CheckCheck, Trash2 } from "lucide-react";
 import React from "react";
+import { useAppContext } from "../../context/AppContext";
+import toast from "react-hot-toast";
 
 const CommentTableItem = ({ comment, fetchComments }) => {
   const { blog, createdAt, _id } = comment;
   const BlogDate = new Date(createdAt);
+  const { axios } = useAppContext();
+
+  const approveComment = async () => {
+    try {
+      const { data } = await axios.post("api/admin/approve-comment", {
+        id: _id,
+      });
+      if (data.success) {
+        toast.success(data.message);
+        fetchComments();
+      } else {
+        toast.error(data.message);
+      }
+    } catch (error) {
+      toast.error(error.message);
+    }
+  };
 
   return (
     <tr className="order-y" border-gray-300>
