@@ -45,8 +45,8 @@ function Blog() {
   const addComment = async (e) => {
     e.preventDefault();
     try {
-      const { data } = await axios.post("/api/blog/add-comments", {
-        blogId: id,
+      const { data } = await axios.post("/api/blog/add-comment", {
+        blog: id,
         name,
         content,
       });
@@ -126,6 +126,7 @@ function Blog() {
           >
             <input
               onChange={(e) => setName(e.target.value)}
+              value={name}
               type="text"
               placeholder="Name"
               required
@@ -133,6 +134,7 @@ function Blog() {
             />
             <textarea
               onChange={(e) => setContent(e.target.value)}
+              value={content}
               placeholder="Comment"
               required
               className="w-full p-2 border border-gray-300 rounded outline-none h-48 text-gray-400 resize-none"
