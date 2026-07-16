@@ -58,7 +58,10 @@ const AddBlog = () => {
   }, []);
 
   return (
-    <form className="flex-1 text-gray-300 h-full overflow-scroll">
+    <form
+      onSubmit={onSubmitHandler}
+      className="flex-1 text-gray-300 h-full overflow-scroll"
+    >
       <div className=" bg-white/5 w-full max-w-3xl p-4 md:p-10 sm:m-10 shadow rounded">
         <p>Upload Thumbnail</p>
         <label htmlFor="image">
