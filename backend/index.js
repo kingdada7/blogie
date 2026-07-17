@@ -20,7 +20,7 @@ app.use(express.urlencoded({ extended: true }));
 
 app.use(
   cors({
-    origin: "https://blogie-aum9-7el2cu3r4-dada3.vercel.app/" ,
+    origin: "https://blogie-aum9-7el2cu3r4-dada3.vercel.app" ,
     credentials: true,
     methods: ["GET", "POST", "PUT", "PATCH", "DELETE"],
     allowedHeaders: ["Content-Type", "Authorization"],
