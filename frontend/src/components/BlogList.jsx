@@ -32,7 +32,7 @@ const BlogList = () => {
                 <motion.div
                   layoutId="underline"
                   transition={{ type: "spring,stiffness:500,damping:30" }}
-                  className="absolute left-0 right-0 top-0 h-7 -z-1 bg-primary rounded-full"
+                  className="absolute left-0 right-0 top-0 h-7 -z-1 bg-cyan-600 rounded-full"
                 ></motion.div>
               )}
             </button>

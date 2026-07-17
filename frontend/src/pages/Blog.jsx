@@ -83,7 +83,7 @@ function Blog() {
           {data.subTitle}
         </h2>
         <p className="text-gray-400 inline-block py-1 px-4 rounded-full mb-6 border text-sm border-cyan/35 bg-primary font-medium ">
-          john doe
+          King charles
         </p>
       </div>
       <div className="mx-5 max-w-5xl md:mx-auto my-10 mt-6">
