@@ -101,6 +101,7 @@ const AddBlog = () => {
             required
           />
         </label>
+        
       
 
         <p className="mt-4 text-gray-300">Blog title</p>
